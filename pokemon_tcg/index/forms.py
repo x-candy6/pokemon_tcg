@@ -14,6 +14,15 @@ from django.contrib.auth.models import User
 from django.forms.widgets import DateInput
 from . import models
 
+
+class userRegistrationForm(UserCreationForm):
+    class Meta:
+        model = User
+        model.is_staff = False
+        fields = ['username', 'first_name', 'last_name',
+                  'email', 'password1', 'password2']
+
+
 # class createGroupForm(ModelForm):
 #    class Meta:
 #        model = models.Group

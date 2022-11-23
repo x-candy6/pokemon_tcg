@@ -1,26 +1,38 @@
-<head>
-    <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
+{%load static%}
+<style></style>
+<nav class="navbar navbar-expand" style="background-color: black; color: white; border-bottom: white solid 1px">
+    <div class="container-fluid" style="color: cyan">
+        <a class="navbar-brand" href="{% url 'index:index' %}">
+            <img src="{% static 'assets/pokemon-logo.png'%}" style="width: 8vw; height: 5vh" alt="" />
+        </a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index:collection' %}">Collection</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index:exclusive' %}">Exclusive Deals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index:lookout' %}">Lookout</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <div class="d-flex">
+                {%if request.user.is_authenticated %}
+                <ul class="nav-item">
+                    <a class="nav-link" href="{% url 'index:logout' %}">Logout</a>
+                </ul>
+                {% else %}
+                <ul class="nav-item">
+                    <a class="nav-link" href="{% url 'index:login' %}">Login</a>
+                </ul>
+                <ul class="nav-item">
+                    <a class="nav-link" href="{% url 'index:register' %}">Register</a>
+                </ul>
 
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            padding: 8px;
-            background-color: #dddddd;
-        }
-    </style>
-</head>
-<ul>
-    <li><a href="{% url '' %}">Home</a></li>
-    <li><a href="{% url '' %}">News</a></li>
-    <li><a href="{% url '' %}">Contact</a></li>
-    <li><a href="{% url '' %}">About</a></li>
-</ul>
+                {% endif %}
+            </div>
+        </ul>
+    </div>
+</nav>
+<style></style>
