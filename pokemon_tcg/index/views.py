@@ -17,6 +17,9 @@ def index(request):
 
 def addCard(request):
     # return response
+    addCardForm = forms.addCardForm()
+    if request.method == "POST":
+        addCardForm = forms.addCardForm.save(commit=False)
     return render(request, "index/addCard.html")
 
 
@@ -38,11 +41,14 @@ def lookout(request):
 ##AUTHENTICATION##
 def logoutPage(request):
     logout(request)
-    return redirect('index')
-    # return render(request, "index/login.html")
+    return redirect('index:index')
+    # return render(request, "index/logout.html")
 
 
 def loginPage(request):
+    context = {
+
+    }
     # return response
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -52,7 +58,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            return redirect('index')
+            return redirect('/')
         else:
             context = {
                 'username': username,
@@ -63,26 +69,29 @@ def loginPage(request):
                 'modalBtnText': "Close",
                 'modalImmediate': True
             }
-            return render(request, 'login.html', context)
+            return render(request, 'index/login.html', context)
     return render(request, "index/login.html")
 
 
 def register(request):
     # return response
     user_form = forms.userRegistrationForm()
+    context = {
+        'user_form': user_form,
+    }
     if request.method == 'POST':
         user_form = forms.userRegistrationForm(request.POST)
         if not user_form.is_valid():
             print(user_form.errors)
-            return render(request, 'index/register.html')
+            return render(request, 'index/register.html', context)
         else:
             user = user_form.save()
             user = authenticate(
-                request, username=request.POST['username'], password=request.POST['password'])
+                request, username=request.POST['username'], password=request.POST['password2'])
             if user is not None:
                 login(request, user)
-                return render(request, "index/index.html")
+                return render(request, "index/index.html", context)
 
-            return render(request, "index/index.html")
+            return render(request, "index/index.html", context)
 
-    return render(request, "index/register.html")
+    return render(request, "index/register.html", context)

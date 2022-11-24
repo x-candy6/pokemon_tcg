@@ -15,6 +15,12 @@ from django.forms.widgets import DateInput
 from . import models
 
 
+class addCardForm(ModelForm):
+    class Meta:
+        model = PokeCard
+        exclude = []
+
+
 class userRegistrationForm(UserCreationForm):
     class Meta:
         model = User

@@ -9,10 +9,81 @@
     </head>
     <body>
         {% include 'nav.html' %}
+        </br>
+        </br>
+        <div class="col-md-8 offset-md-2 logincard" style="">
+            <section class="text-center text-lg-start">
+                <style>
+                    .rounded-t-5 {
+                        border-top-left-radius: 0.5rem;
+                        border-top-right-radius: 0.5rem;
+                    }
 
-        <h1>hi</h1>
+                    @media (min-width: 992px) {
+                        .rounded-tr-lg-0 {
+                            border-top-right-radius: 0;
+                        }
+
+                        .rounded-bl-lg-5 {
+                            border-bottom-left-radius: 0.5rem;
+                        }
+                    }
+                </style>
+                <div class="card mb-3">
+                    <div class="row g-0 d-flex align-items-center">
+                        <div class="col-lg-4 d-none d-lg-flex">
+                            <img
+                                src="https://external-preview.redd.it/JkH_Q37DhROedvibULixdgZqu8ITDtlGd20lIULVVqU.jpg?auto=webp&s=ffa224a4bc05904f2f435fbca6805f0d09f69f89"
+                                alt="Charizard"
+                                class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5"
+                                style="height: 100%; width: auto;"
+                            />
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body py-5 px-md-5" style="">
+                                <form method="POST">
+                                        {% csrf_token %}
+                                    <h3 style="padding-bottom: 13px">Register here!</h3>
+                                    {{user_form}}
+
+
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Section: Design Block -->
         {% include 'bootstrapJS.html' %}
+
+
     </body>
 </html>
 
-<style></style>
+<style>
+
+    body{
+
+            background-image: url("{% static 'assets/blackmarble.jpg'%}");
+              background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  height:100%;
+  background-color: black;
+    }
+
+    section{
+        border-image: linear-gradient(red, green, blue, purple) 15;
+        border-width: 14px;
+        border-style: solid;
+        background-color:black;
+
+
+    }
+
+
+
+</style>

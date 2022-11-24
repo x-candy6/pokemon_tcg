@@ -11,8 +11,7 @@
 
         <!-- Section: Design Block -->
         </br>
-        </br>
-        </br>
+        </br> </br>
         <div class="col-md-8 offset-md-2 logincard" style="">
             <section class="text-center text-lg-start">
                 <style>
@@ -42,21 +41,19 @@
                         </div>
                         <div class="col-lg-8">
                             <div class="card-body py-5 px-md-5" style="">
-                                <form method="POST">
+                                <form action="" method="POST">
+                                    {% csrf_token %}
                                     <h3 style="padding-bottom: 13px">Login here!</h3>
-                                    <!-- Email input -->
-                                    <div class="form-outline mb-4">
-                                        <input type="email" id="form2Example1" class="form-control" />
-                                        <label class="form-label" for="form2Example1">Email address</label>
-                                    </div>
+                                    <label for="username">
+                                        <b>Username</b><br>
+                                        <input type="text" id="username" name="username" size="30" maxlength="100"><br><br>
+                                    </label><br>
+                                    <label>
+                                        <b>Password</b><br>
+                                        <input type="password" name="password" size="30" maxlength="100"><br>
+                                    </label><br><br>
+                  
 
-                                    <!-- Password input -->
-                                    <div class="form-outline mb-4">
-                                        <input type="password" id="form2Example2" class="form-control" />
-                                        <label class="form-label" for="form2Example2">Password</label>
-                                    </div>
-
-                                    <!-- 2 column grid layout for inline styling -->
                                     <div class="row mb-4">
                                         <div class="col d-flex justify-content-center">
                                             <!-- Checkbox -->
@@ -81,7 +78,7 @@
                                     </div>
 
                                     <!-- Submit button -->
-                                    <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+                                    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
                                 </form>
                             </div>
                         </div>
